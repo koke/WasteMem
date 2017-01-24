@@ -10,15 +10,6 @@
 #import <mach/mach.h>
 #import <mach/mach_host.h>
 
-typedef struct node {
-    void *val;
-    NSInteger size;
-    struct node * next;
-} node_t;
-
-static node_t *stuff = NULL;
-
-
 @implementation Memory
 + (MemoryStats)stats {
     mach_port_t host_port = mach_host_self();
