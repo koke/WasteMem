@@ -49,7 +49,6 @@ class ViewController: UIViewController {
         }
         let chunk = handle.readData(ofLength: Int(size))
         data.append(chunk)
-//        let actualSize = Memory.allocateBytes(size)
         log("👾 Allocated \(formatMemory(chunk.count))")
     }
 
@@ -77,7 +76,6 @@ class ViewController: UIViewController {
         log("✋ Stop")
         button.setTitle("Start", for: .normal)
         running = false
-//        let freedFormatted = formatMemory(Memory.freeAllTheThings())
         let freedFormatted = formatMemory(data.count)
         data.removeAll()
         log("😌 Freed \(freedFormatted)")

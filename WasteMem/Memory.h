@@ -16,6 +16,4 @@ typedef struct {
 
 @interface Memory : NSObject
 + (MemoryStats)stats;
-+ (NSInteger)allocateBytes:(NSInteger)size;
-+ (NSInteger)freeAllTheThings;
 @end

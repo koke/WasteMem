@@ -40,43 +40,4 @@ static node_t *stuff = NULL;
     return stats;
 }
 
-+ (NSInteger)allocateBytes:(NSInteger)size {
-    node_t *node;
-    if (stuff == NULL) {
-        stuff = calloc(1, sizeof(node_t));
-        node = stuff;
-    } else {
-        node = stuff;
-        // `O(n)`o! 😬
-        while (node->next != NULL) {
-            node = node->next;
-        }
-        node->next = calloc(1, sizeof(node_t));
-        node = node->next;
-    }
-    node->val = calloc(1, size);
-    while (size > 1024 && node->val == NULL) {
-        size /= 2;
-        node->val = malloc(size);
-    }
-    node->size = size;
-    return size;
-}
-
-+ (NSInteger)freeAllTheThings {
-    size_t freed = 0;
-    node_t *node = stuff;
-    if (node == NULL) {
-        return freed;
-    }
-    while (node) {
-        node_t *next = node->next;
-        freed += node->size;
-        free(node->val);
-        free(node);
-        node = next;
-    }
-    return freed;
-}
-
 @end
